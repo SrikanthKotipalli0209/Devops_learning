@@ -39,4 +39,4 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'docker run -d --name java2-image -p 1122:8080 myapp:$IMAGE_TAG'
+    script: 'docker run -d --name java3-image -p 1122:8080 myapp:$IMAGE_TAG'
