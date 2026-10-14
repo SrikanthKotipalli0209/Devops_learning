@@ -34,3 +34,7 @@ steps:
     script: |
       docker pull tomcat:9.0.122-jre8-temurin
       docker build -t myapp:latest .
+
+- task: CmdLine@2
+  inputs:
+    script: 'docker run -t --name java-image -p 1234:8000 myapp'
