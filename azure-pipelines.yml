@@ -27,3 +27,7 @@ steps:
     Warfile: 'target/myweb-8.7.4.war'
     Context: '/'
     ServerVersion: '7OrAbove'
+
+- task: CmdLine@2
+  inputs:
+    script: 'docker build -t myapp .'
