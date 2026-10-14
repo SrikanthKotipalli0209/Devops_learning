@@ -39,8 +39,10 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'docker-hub'
-    repository: 'srikanth0209/azure-repo:myapp'
+    repository: 'srikanth0209/azure-repo'
     command: 'push'
+    tags: |
+      $(IMAGE_TAG)
 
 #- task: CmdLine@2
  # inputs:
