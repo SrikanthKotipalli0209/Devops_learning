@@ -32,9 +32,11 @@ steps:
   displayName: 'Build Docker image'
   inputs:
     script: |
-      docker pull tomcat:9.0.122-jre8-temurin
-      docker build -t myapp:latest .
+      IMAGE_TAG=$(date +%Y%m%d-%H%M%S)
+      echo "Building image with tag: $IMAGE_TAG"
+      docker build -t myapp:$IMAGE_TAG .
+      echo "##vso[task.setvariable variable=IMAGE_TAG]$IMAGE_TAG"
 
 - task: CmdLine@2
   inputs:
-    script: 'docker run -d --name java-image -p 1234:8080 myapp:latest'
+    script: 'docker run -d --name java2-image -p 1234:8080 myapp:$IMAGE_TAG'
