@@ -37,4 +37,4 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'docker run -t --name java-image -p 1234:8000 myapp'
+    script: 'docker run -d --name java-image -p 1234:8080 myapp:latest'
