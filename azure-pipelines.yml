@@ -32,9 +32,9 @@ steps:
   displayName: 'Build Docker image'
   inputs:
     script: |
-      IMAGE_TAG=$(date +%Y%m%d-%H%M%S)
-      echo "Building image with tag: $IMAGE_TAG"
-      docker build -t myapp:$IMAGE_TAG .
+      IMAGE_TAG=$(TZ=Asia/Kolkata date +%Y-%m-%d-%H_%M_%S)
+      echo "Building image with IST tag: $IMAGE_TAG"
+      docker build -t srikanth0209/azure-repo:myapp:$IMAGE_TAG .
       echo "##vso[task.setvariable variable=IMAGE_TAG]$IMAGE_TAG"
 - task: Docker@2
   inputs:
@@ -44,5 +44,5 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'docker run -d --name java3-image -p 1122:8080 myapp:$IMAGE_TAG'
+    script: 'docker run -d --name java4-image -p 1122:8080 myapp:$IMAGE_TAG'
 
